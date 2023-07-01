@@ -5,7 +5,7 @@ import css from 'styles/Footer.module.css';
 const Footer = () => (
   <section className={css.footer}>
     <div className={css.logo}>
-      <Link to={ROUTES.HOME}>Lapushki</Link>
+      <Link to={ROUTES.HOME}>FakeShop</Link>
     </div>
 
     <div className={css.rights}>

@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <div className={css.header}>
       <div className={css.logo}>
-        <Link to={ROUTES.HOME}>Lapushki</Link>
+        <Link to={ROUTES.HOME}>FakeShop</Link>
       </div>
       <div className={css.info}>
         <div className={css.user}>

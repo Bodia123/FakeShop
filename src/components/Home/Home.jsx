@@ -1,22 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Poster from 'components/Poster/Poster';
 import Products from 'components/Products/Products';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Categories from 'components/Categories/Categories';
 import Banner from 'components/Banner/Banner';
+import { filterByPrice } from 'Features/Products/ProductsSlice';
 
 export const Home = () => {
-  const { products, categories } = useSelector(state => state);
+  const dispatch = useDispatch();
+  const {
+    products: { list, filtered },
+    categories,
+  } = useSelector(state => state);
+  useEffect(() => {
+    if (!list.length) return;
+
+    dispatch(filterByPrice(100));
+  }, [dispatch, list.length]);
   return (
     <>
       <Poster />
-      <Products products={products.list} amount={5} title="Популярні" />
+      <Products products={list} amount={5} title="Популярні" />
       <Categories
         products={categories.list}
         amount={5}
         title="Варто вашої уваги"
       />
       <Banner />
+      <Products products={filtered} amount={5} title="Дешевше ніж 100$" />
     </>
   );
 };
