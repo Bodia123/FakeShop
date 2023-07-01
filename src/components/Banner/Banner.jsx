@@ -7,16 +7,16 @@ function Banner() {
     <section className={css.banner}>
       <div className={css.left}>
         <p className={css.content}>
-          New Year<span>SALE</span>
+          Новорічні<span>ЗНИЖКИ</span>
         </p>
-        <button className={css.more}>See more</button>
+        <button className={css.more}>Детальніше</button>
       </div>
       <div
         className={css.right}
         style={{ backgroundImage: `url(${bannerImg})` }}
       >
         <p className={css.discount}>
-          save up to <span>50%</span> off
+          дешевше на <span>50%</span>
         </p>
       </div>
     </section>
