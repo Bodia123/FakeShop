@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import css from 'styles/User.module.css';
 
-function UserSingUpForm({ closeForm }) {
+function UserSingUpForm({ closeForm, toggleCurrentFormType }) {
   const dispatch = useDispatch();
   const [values, setValues] = useState({
     name: '',
@@ -29,7 +29,7 @@ function UserSingUpForm({ closeForm }) {
           <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#close`} />
         </svg>
       </div>
-      <div className={css.title}>SignUp</div>
+      <div className={css.title}>Створити аккаунт</div>
       <form className={css.form} onSubmit={handleSubmit}>
         <div className={css.group}>
           <input
@@ -75,7 +75,12 @@ function UserSingUpForm({ closeForm }) {
             required
           />
         </div>
-        <div className={css.link}>У мне уже є аккаунт</div>
+        <div
+          className={css.link}
+          onClick={() => toggleCurrentFormType('login')}
+        >
+          У мне уже є аккаунт
+        </div>
         <button type="submit" className={css.submit}>
           Створити аккаунт
         </button>

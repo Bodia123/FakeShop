@@ -1,9 +1,9 @@
-import { createUser } from 'Features/User/UserSlice';
+import { loginUser } from 'Features/User/UserSlice';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import css from 'styles/User.module.css';
 
-function UserSingUpForm({ closeForm }) {
+function UserLoginForm({ closeForm, toggleCurrentFormType }) {
   const dispatch = useDispatch();
   const [values, setValues] = useState({
     email: '',
@@ -17,7 +17,7 @@ function UserSingUpForm({ closeForm }) {
 
     const isNotEmpty = Object.values(values).every(val => val);
     if (!isNotEmpty) return;
-    dispatch(createUser(values));
+    dispatch(loginUser(values));
     closeForm();
   };
   return (
@@ -27,7 +27,7 @@ function UserSingUpForm({ closeForm }) {
           <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#close`} />
         </svg>
       </div>
-      <div className={css.title}>SignUp</div>
+      <div className={css.title}>Увійти</div>
       <form className={css.form} onSubmit={handleSubmit}>
         <div className={css.group}>
           <input
@@ -53,7 +53,12 @@ function UserSingUpForm({ closeForm }) {
           />
         </div>
 
-        <div className={css.link}>Сторити аккаунт</div>
+        <div
+          className={css.link}
+          onClick={() => toggleCurrentFormType('singup')}
+        >
+          Сторити аккаунт
+        </div>
         <button type="submit" className={css.submit}>
           Увійти
         </button>
@@ -62,4 +67,4 @@ function UserSingUpForm({ closeForm }) {
   );
 }
 
-export default UserSingUpForm;
+export default UserLoginForm;

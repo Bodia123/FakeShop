@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import css from 'styles/Header.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ROUTES from 'utils/routes';
 
 import AVATAR from 'images/avatar.jpg';
@@ -9,6 +9,7 @@ import { toggleForm } from 'Features/User/UserSlice';
 const Header = () => {
   const { currentUser } = useSelector(({ user }) => user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [values, setValues] = useState({ name: 'Гость', avatar: AVATAR });
   useEffect(() => {
     if (!currentUser) return;
@@ -16,6 +17,7 @@ const Header = () => {
   }, [currentUser]);
   const handleClick = () => {
     if (!currentUser) dispatch(toggleForm(true));
+    else navigate(ROUTES.PROFILE);
   };
   return (
     <div className={css.header}>

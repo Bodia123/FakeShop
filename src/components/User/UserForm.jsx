@@ -2,17 +2,27 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import UserSingUpForm from './UserSingUpForm';
 import css from 'styles/User.module.css';
-import { toggleForm } from 'Features/User/UserSlice';
+import { toggleForm, toggleFormType } from 'Features/User/UserSlice';
+import UserLoginForm from './UserLoginForm';
 function UserForm() {
-  const { showForm } = useSelector(({ user }) => user);
+  const { showForm, formType } = useSelector(({ user }) => user);
   const dispatch = useDispatch();
-  const closeForm = () => {
-    dispatch(toggleForm(false));
-  };
+  const closeForm = () => dispatch(toggleForm(false));
+  const toggleCurrentFormType = type => dispatch(toggleFormType(type));
   return showForm ? (
     <>
       <div className={css.overlay} onClick={closeForm} />
-      <UserSingUpForm closeForm={closeForm} />
+      {formType === 'singup' ? (
+        <UserSingUpForm
+          closeForm={closeForm}
+          toggleCurrentFormType={toggleCurrentFormType}
+        />
+      ) : (
+        <UserLoginForm
+          closeForm={closeForm}
+          toggleCurrentFormType={toggleCurrentFormType}
+        />
+      )}
     </>
   ) : (
     <></>
