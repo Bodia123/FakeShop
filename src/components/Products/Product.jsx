@@ -1,11 +1,16 @@
+import { addItemToCart } from 'Features/User/UserSlice';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import css from 'styles/Product.module.css';
 import ROUTES from 'utils/routes';
 
 const SIZES = [4, 5, 6];
 
-function Product({ images, title, price, description }) {
+function Product(item) {
+  const { images, title, price, description } = item;
+  const dispatch = useDispatch();
+
   const [currentImage, setCurrentImage] = useState();
   const [currentSize, setCurrentSize] = useState();
 
@@ -15,6 +20,9 @@ function Product({ images, title, price, description }) {
     setCurrentImage(images[0]);
   }, [images]);
 
+  const addToCart = () => {
+    dispatch(addItemToCart(item));
+  };
   return (
     <section className={css.product}>
       <div className={css.images}>
@@ -57,7 +65,11 @@ function Product({ images, title, price, description }) {
         </div>
         <p className={css.description}>{description}</p>
         <div className={css.actions}>
-          <button className={css.add} disabled={!currentSize}>
+          <button
+            className={css.add}
+            disabled={!currentSize}
+            onClick={addToCart}
+          >
             Додати до корзини
           </button>
           <button className={css.favourite}>Додати до улюблених</button>

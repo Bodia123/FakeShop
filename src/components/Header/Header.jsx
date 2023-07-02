@@ -1,22 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import css from 'styles/Header.module.css';
 import { Link } from 'react-router-dom';
 import ROUTES from 'utils/routes';
 
 import AVATAR from 'images/avatar.jpg';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleForm } from 'Features/User/UserSlice';
 const Header = () => {
+  const { currentUser } = useSelector(({ user }) => user);
+  const dispatch = useDispatch();
+  const [values, setValues] = useState({ name: 'Гость', avatar: AVATAR });
+  useEffect(() => {
+    if (!currentUser) return;
+    setValues(currentUser);
+  }, [currentUser]);
+  const handleClick = () => {
+    if (!currentUser) dispatch(toggleForm(true));
+  };
   return (
     <div className={css.header}>
       <div className={css.logo}>
         <Link to={ROUTES.HOME}>FakeShop</Link>
       </div>
       <div className={css.info}>
-        <div className={css.user}>
+        <div className={css.user} onClick={handleClick}>
           <div
             className={css.avatar}
-            style={{ backgroundImage: `url(${AVATAR})` }}
+            style={{ backgroundImage: `url(${values.avatar})` }}
           />
-          <div className={css.userName}>Гість</div>
+          <div className={css.userName}>{values.name}</div>
         </div>
       </div>
       <form className={css.form}>
