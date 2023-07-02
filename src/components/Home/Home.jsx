@@ -24,7 +24,7 @@ export const Home = () => {
       <Categories
         products={categories.list}
         amount={5}
-        title="Варто вашої уваги"
+        title="Категорії, які варті вашої уваги"
       />
       <Banner />
       <Products products={filtered} amount={5} title="Дешевше ніж 100$" />

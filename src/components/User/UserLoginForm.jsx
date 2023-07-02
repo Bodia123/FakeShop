@@ -55,7 +55,9 @@ function UserLoginForm({ closeForm, toggleCurrentFormType }) {
 
         <div
           className={css.link}
-          onClick={() => toggleCurrentFormType('singup')}
+          onClick={() => {
+            toggleCurrentFormType('singup');
+          }}
         >
           Сторити аккаунт
         </div>

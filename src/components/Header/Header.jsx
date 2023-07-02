@@ -12,7 +12,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState('');
-  const [values, setValues] = useState({ name: 'Гость', avatar: AVATAR });
+  const [values, setValues] = useState({ name: 'Гість', avatar: AVATAR });
   const { data, isLoading } = useGetProductsQuery({ title: searchValue });
   useEffect(() => {
     if (!currentUser) return;

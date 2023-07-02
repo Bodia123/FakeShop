@@ -16,19 +16,19 @@ const Footer = () => (
     </div>
 
     <div className={css.socials}>
-      <a href="https://instagram.com" target="_blank" rel="noreferrer">
+      <a href="https://github.com/Bodia123" target="_blank" rel="noreferrer">
         <svg className="icon">
           <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#instagram`} />
         </svg>
       </a>
 
-      <a href="https://facebook.com" target="_blank" rel="noreferrer">
+      <a href="https://github.com/Bodia123" target="_blank" rel="noreferrer">
         <svg className="icon">
           <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#facebook`} />
         </svg>
       </a>
 
-      <a href="https://youtube.com" target="_blank" rel="noreferrer">
+      <a href="https://github.com/Bodia123" target="_blank" rel="noreferrer">
         <svg className="icon">
           <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#youtube`} />
         </svg>

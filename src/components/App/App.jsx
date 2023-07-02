@@ -7,6 +7,8 @@ import Sidebar from 'components/Sidebar/Sidebar';
 import { getCategories } from 'Features/Categories/categoriesSlice';
 import { getProducts } from 'Features/Products/ProductsSlice';
 import UserForm from 'components/User/UserForm';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -25,6 +27,18 @@ export const App = () => {
       </div>
 
       <Footer />
+      <ToastContainer
+        position="top-right"
+        autoClose={500}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover={false}
+        theme="dark"
+      />
     </div>
   );
 };

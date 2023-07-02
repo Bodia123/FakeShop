@@ -24,12 +24,8 @@ const Sidebar = () => {
         </ul>
       </nav>
       <div className={css.footer}>
-        <a href="/help" target="_blank" className={css.link}>
-          Допомога
-        </a>
-        <a href="/help" target="_blank" className={css.link}>
-          FAQ
-        </a>
+        <p className={css.link}>Допомога</p>
+        <p className={css.link}>FAQ</p>
       </div>
     </section>
   );

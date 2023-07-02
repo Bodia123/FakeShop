@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import css from 'styles/Product.module.css';
+import { successNotification } from 'utils/notification';
 import ROUTES from 'utils/routes';
 
 const SIZES = [4, 5, 6];
@@ -21,6 +22,8 @@ function Product(item) {
   }, [images]);
 
   const addToCart = () => {
+    successNotification('Додали!');
+
     dispatch(addItemToCart(item));
   };
   return (
@@ -45,10 +48,10 @@ function Product(item) {
         <h1 className={css.title}>{title}</h1>
         <div className={css.price}>{price}$</div>
         <div className={css.color}>
-          <span>Color:</span> Green
+          <span>Колір:</span> Зелений
         </div>
         <div className={css.sizes}>
-          <span>Size:</span>
+          <span>Розмір:</span>
           <div className={css.list}>
             {SIZES.map(size => (
               <div
@@ -75,7 +78,9 @@ function Product(item) {
           <button className={css.favourite}>Додати до улюблених</button>
         </div>
         <div className={css.bottom}>
-          <div className={css.purchase}>19 людей придбало</div>
+          <div className={css.purchase}>
+            {Math.floor(Math.random() * 20 + 1)} людей придбало
+          </div>
           <Link to={ROUTES.HOME}>Повернутись до магазину</Link>
         </div>
       </div>

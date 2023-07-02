@@ -12,7 +12,7 @@ function UserForm() {
   return showForm ? (
     <>
       <div className={css.overlay} onClick={closeForm} />
-      {formType === 'singup' ? (
+      {formType === 'signup' ? (
         <UserSingUpForm
           closeForm={closeForm}
           toggleCurrentFormType={toggleCurrentFormType}
