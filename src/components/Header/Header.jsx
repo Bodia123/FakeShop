@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleForm } from 'Features/User/UserSlice';
 import { useGetProductsQuery } from 'Features/API/ApiSlice';
 const Header = () => {
-  const { currentUser } = useSelector(({ user }) => user);
+  const { currentUser, cart } = useSelector(({ user }) => user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState('');
@@ -95,7 +95,7 @@ const Header = () => {
           <svg className={css['icon-cart']}>
             <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#bag`} />
           </svg>
-          <span className={css.count}>2</span>
+          {!!cart.length && <span className={css.count}>{cart.length}</span>}
         </Link>
       </div>
     </div>
