@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/FakeShop/static/css/main.a0dc8aec.css",
-    "main.js": "/FakeShop/static/js/main.05066c3d.js",
+    "main.css": "/FakeShop/static/css/main.bf8b490b.css",
+    "main.js": "/FakeShop/static/js/main.0dc8c3eb.js",
     "static/media/computer.png": "/FakeShop/static/media/computer.5e56530d0ea3793fd73d.png",
     "static/media/banner.png": "/FakeShop/static/media/banner.60b57e7c22678c62bf30.png",
     "static/media/avatar.jpg": "/FakeShop/static/media/avatar.4bc3b938691acbda7100.jpg",
     "static/media/devices.png": "/FakeShop/static/media/devices.a0974f63230d0b90cbec.png",
     "static/media/shoe.png": "/FakeShop/static/media/shoe.db601c8f04844976b606.png",
     "index.html": "/FakeShop/index.html",
-    "main.a0dc8aec.css.map": "/FakeShop/static/css/main.a0dc8aec.css.map",
-    "main.05066c3d.js.map": "/FakeShop/static/js/main.05066c3d.js.map"
+    "main.bf8b490b.css.map": "/FakeShop/static/css/main.bf8b490b.css.map",
+    "main.0dc8c3eb.js.map": "/FakeShop/static/js/main.0dc8c3eb.js.map"
   },
   "entrypoints": [
-    "static/css/main.a0dc8aec.css",
-    "static/js/main.05066c3d.js"
+    "static/css/main.bf8b490b.css",
+    "static/js/main.0dc8c3eb.js"
   ]
 }
