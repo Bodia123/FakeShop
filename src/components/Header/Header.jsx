@@ -6,19 +6,28 @@ import ROUTES from 'utils/routes';
 import AVATAR from 'images/avatar.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleForm } from 'Features/User/UserSlice';
+import { useGetProductsQuery } from 'Features/API/ApiSlice';
 const Header = () => {
   const { currentUser } = useSelector(({ user }) => user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [searchValue, setSearchValue] = useState('');
   const [values, setValues] = useState({ name: 'Гость', avatar: AVATAR });
+  const { data, isLoading } = useGetProductsQuery({ title: searchValue });
   useEffect(() => {
     if (!currentUser) return;
     setValues(currentUser);
   }, [currentUser]);
+
   const handleClick = () => {
     if (!currentUser) dispatch(toggleForm(true));
     else navigate(ROUTES.PROFILE);
   };
+
+  const hendleSearch = ({ target: { value } }) => {
+    setSearchValue(value);
+  };
+
   return (
     <div className={css.header}>
       <div className={css.logo}>
@@ -45,11 +54,36 @@ const Header = () => {
             name="search"
             placeholder="Пошук"
             autoComplete="off"
-            value=""
-            onChange={() => {}}
+            value={searchValue}
+            onChange={hendleSearch}
           />
         </div>
-        {false && <div className={css.box}></div>}
+        {searchValue && (
+          <div className={css.box}>
+            {isLoading
+              ? 'Завантажується...'
+              : !data.length
+              ? 'Результати відсутні!'
+              : data.map(({ title, images, id }) => {
+                  return (
+                    <Link
+                      key={id}
+                      onClick={() => {
+                        setSearchValue('');
+                      }}
+                      to={`/product/${id}`}
+                      className={css.item}
+                    >
+                      <div
+                        className={css.image}
+                        style={{ backgroundImage: `url(${images[0]})` }}
+                      />
+                      <div className={css.title}>{title}</div>
+                    </Link>
+                  );
+                })}
+          </div>
+        )}
       </form>
       <div className={css.account}>
         <Link to={ROUTES.HOME} className={css.favourites}>
